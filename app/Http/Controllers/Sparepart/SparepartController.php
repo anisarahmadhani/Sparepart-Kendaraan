@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Sparepart;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\EditSparepartRequest;
 use App\Http\Requests\InputSparepartRequest;
-use App\Models\Sparepart as Sprt;
-use App\Models\Suplier;
 use Illuminate\Http\Request;
 
 class SparepartController extends Controller
@@ -16,7 +14,7 @@ class SparepartController extends Controller
         $data['sparepart'] = Sprt::leftJoin('suplier', 'suplier.id', 'sparepart.id_suplier')
             ->select('sparepart.*', 'suplier.nama_suplier')
             ->get();
-        return view('sparepart.index', $data);
+        return view('sparepart.index');
     }
 
     public function tambah()
